@@ -7,3 +7,21 @@ before_install:
 
 script:
     - docker run skvisha/docker-react npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "eu-central-1" #taken from aws url for the project
+    app: "docker-react"
+    env: "DockerReact-env"
+    #S3 storage where zip with all files shouold be put to
+    # find it in aws->S3
+    bucket_name: "elasticbeanstalk-eu-central-1-941462630206" 
+    bucket_path: "docker-react" #app name
+    on:
+        branch: master # deploy from master branch,when new code appears there
+    access_key_id: "$AWS_ACCESS_KEY"
+    secret_access_key:
+        secure: "$AWS_SECRET_KEY"
+
+
+      
