@@ -10,6 +10,8 @@ RUN npm run build
 
 #run phase
 FROM nginx
+#this is needed for port mapping in travis.ci for AWS elasticbeanstalk
+EXPOSE 80
 #copy build folder from "builder" phase to this image
 # --from parameter means u are copying outcome of some previous step :
 # In this case app/build folder
