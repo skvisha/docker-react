@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . .
 
+#adding some comment to test git plugin
+
 CMD ["npm", "run", "start"]
